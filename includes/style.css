@@ -1,0 +1,26 @@
+.language-tabs{
+}
+.language-tabs li{
+  float:left;
+  border:solid #eee 1px;
+}
+  .label-language-flag{
+    margin-right:5px;
+    position:relative;
+    top:3px;
+  }
+  .language-tabs a{
+    display:block;
+    font-weight:bold;
+    line-height:22px;
+    height:22px;
+    padding:5px 10px;
+  }
+  .language-tabs .selected{
+    background-color:#eee;
+  }
+
+.language-tab-content{
+  background-color:#eee;
+  padding:15px 10px;
+}
