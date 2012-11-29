@@ -5,7 +5,7 @@ class Languages extends \dependencies\BaseModel
   
   protected static
     
-    $table_name = 'language_languages',
+    $table_name = 'core_languages',
     
     $relations = array(
       'LanguageInfo' => array('id' => 'LanguageInfo.language_id')
