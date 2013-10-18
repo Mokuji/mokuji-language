@@ -8,15 +8,13 @@ class Modules extends \dependencies\BaseViews
       'language_select' => 0
     );
 
-  protected function language_select($options = null)
+  protected function language_select()
   {
-
-    $title_column = $options->title_column->otherwise('title');
 
     $ret = '<ul class="clearfix">';
 
-    $this->helper('get_languages', array('in_language_id' => tx('Language')->get_language_id()))->each(function($row)use(&$ret, $title_column){
-      $ret .= '<li'.($row->id->get('int') == tx('Language')->get_language_id() ? ' class="active"' : '').'><a href="'.url('action=language/set_language&language_id='.$row->id).'" class="flag '.$row->shortcode.'">'.$row->{$title_column}.'</a></li>';
+    $this->helper('get_languages', array('in_language_id' => tx('Language')->get_language_id()))->each(function($row)use(&$ret){
+      $ret .= '<li'.($row->id->get('int') == tx('Language')->get_language_id() ? ' class="active"' : '').'><a href="'.url('action=language/set_language&language_id='.$row->id).'" class="flag '.$row->shortcode.'">'.$row->title.'</a></li>';
     });
 
     $ret .= '</ul>';

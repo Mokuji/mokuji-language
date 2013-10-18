@@ -2,12 +2,7 @@
 
 class Actions extends \dependencies\BaseComponent
 {
-
-  protected
-    $permissions = array(
-      'set_language' => 0
-    );
-
+  
   protected function set_language($data)
   {
 

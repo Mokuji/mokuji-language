@@ -22,7 +22,7 @@ class Helpers extends \dependencies\BaseComponent
         
         $ret .=
           '<li id="tabber-'.$row->id.'"><a href="#tab-'.$row->id.'">'.
-          //($row->image_id->is_set() ? '<img class="label-language-flag" src="'.url('section=media/image&resize=0/16&id='.$row->image_id).'" />' : '').
+          ($row->image_id->is_set() ? '<img class="label-language-flag" src="'.url('section=media/image&resize=0/16&id='.$row->image_id).'" />' : '').
           ($options->display_as->check('empty') ? $row->{$options->display_as} : $row->title).
           '</a></li>';
         
@@ -43,6 +43,12 @@ class Helpers extends \dependencies\BaseComponent
     return
       $this
       ->table('Languages')
+      ->join('LanguageInfo', $info)
+      ->select("$info.title", 'title')
+      ->is($options->in_language_id->is('set')->and_not('empty'), function($q)use($options, $info){
+        $q->where("$info.in_language_id", $options->in_language_id);
+      })
+      ->order('sort', 'ASC')
       ->execute();
     
   }
